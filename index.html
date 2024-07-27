@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>IME Dict.｜ft.</title>
+    <link rel='stylesheet' href='style.css'>
+    <link rel='icon' href='https://ftprd.github.io/ftprd_logo.png'>
+</head>
+<body>
+    <section class='description'>
+        <p class='ttl'>IME Dict.</p>
+        <p class='sttl'>Microsoft IME ユーザー辞書ジェネレータ</p>
+    </section>
+
+    <main>
+        <p class='description'>
+            テキストファイル(.txt)を読み込むことで、<br>
+            複数単語まとめてユーザー辞書に登録できます。
+        </p>
+        <section class='main'>
+            <div class='main_input'>
+                <div class='main_input_word'>
+                    <label for='input_word' id='input_word_label'>単語を入力</label>
+                    <input type='text' id='input_word' placeholder='例：雲母坂' autocomplete='off'>
+                    <label for="input_word" class="input_notice_word">（60字以内：現在<span id="input_word_count">0</span>）</label>
+                </div>
+                <div class='main_input_read'>
+                    <label for='input_read' id='input_read_label'>読みを入力</label>
+                    <input type='text' id='input_read' placeholder='例：きららざか' autocomplete='off'>
+                    <label for="input_read" class="input_notice_read">（<span class='notice'>英数字・記号・ひらがな</span>・60字以内：現在<span id="input_read_count">0</span>）</label>
+                </div>
+            </div>
+
+            <div id='main_generate'><span>追加</span></div>
+            <div id='main_generate_guard'></div>
+
+            <div class='main_preview'>
+                <p class='main_preview_ttl'>Preview</p>
+
+                <div id='main_preview'>
+                    <pre id='main_preview_example'>例：きららざか[読み]&#9;雲母坂[単語]&#9;名詞[品詞：名詞限定とします]</pre>
+                </div>
+                <div class="preview_delete_notice">
+                    <p class="ttl">全て消去しますか？</p>
+                    <div class="btns">
+                        <div id="preview_delete_yes">消去する</div>
+                        <div id="preview_delete_no">キャンセル</div>
+                    </div>
+                </div>
+
+                <nav class='main_preview_tools'>
+                    <div id='preview_tools_copy' title="Previewをコピー">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                    </div>
+                    <div id='preview_tools_download' title="Previewをテキストファイル(.txt)としてダウンロード">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                    <div id='preview_tools_delete' title="Previewを全て消去">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                    </div>
+                </nav>
+            </div>
+        </section>
+    </main>
+    
+    <section id="howto">
+        <p class="howto_ttl">Microsoft IMEへの登録方法</p>
+        <div class="howto_copied">
+            <p class="howto_copeid_ttl">コピーをした方</p>
+            <p class="description">
+                ① Windows純正のメモ帳<img src="img/desc_img1.png" alt="" class="desc_img">を立ち上げ、<span title="Windowsでの「貼り付け」のショートカットキー">Ctrl+V</span>で貼り付ける。<br>
+                ② <span title="Windowsでの「(上書き)保存」のショートカットキー">Ctrl+S</span>で保存する。その際、必ず<span class="desc_notice">エンコードを「ANSI」か「UTF-16 LE」</span>にする。<br>
+                ③ 下記「ダウンロードをした方」に続きます。
+            </p>
+        </div>
+        <div class="howto_downloaded">
+            <p class="howto_downloaded_ttl">ダウンロードをした方</p>
+            <p class="description">
+                ① タスクバー右下の<img src="img/desc_img2.png" alt="" class="desc_img">左「あ/A」を右クリック→「単語の追加」→「ユーザー辞書ツール」をクリックし、立ち上げる。<br>
+                ② 上部の「ツール」→「テキストファイルから登録」をクリックし、エクスプローラが開く。<br>
+                ③ ダウンロードした場所を探し、本サイトでダウンロードしたファイルを開く。
+            </p>
+        </div>
+        <p class="howto_ttl">本サイトについて</p>
+        <div class="howto_use">
+            <p class="howto_use_ttl">使い方</p>
+            <p class="description">
+                ・サイト読み込み時、左入力欄（単語枠）が選択されます。<br>
+                ・左入力欄（単語枠）を選択しているときにEnterかTabを押すと、自動的に右入力欄（読み枠）に移ります。<br>
+                ・右入力欄（読み枠）を選択しているときにEnterを押すと、自動的に追加ボタンが押されます。<br>
+                ・追加ボタンを押すと、自動的に左入力欄（単語枠）が選択されます。<br>
+                ・Previewの行は、ホバーしたときに出てくるBackspaceボタンを押すと、行ごとに削除できます。
+            </p>
+        </div>
+        <div class="howto_notice">
+            <p class="howto_notice_ttl">注意点</p>
+            <p class="description">
+                ・本サイトでサポートしているのは、Windowsの日本語Microsoft IMEのみです。<br>
+                ・開発ツールや分割表示等でページ幅が830px以下になってしまった場合、使用不可となります。<br>
+                ・制作意図は、アニメなどの固有名詞・界隈内での用語などをまとめ、Discord等を通して他人にシェアすることです。<br>
+                ・本サイトの不具合・ご要望等あれば、<a href="https://x.com/ft_prd" target="_blank">管理者のTwitterのDM</a>までお願いします。<br>
+                ・制作者・管理人は学生1人なので、対応が遅れる可能性がございます。
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="https://ftprd.github.io" class="copyright">&copy; 2024 ftprd All Rights Reserved.</a>
+    </footer>
+
+    <div class='notice_phone'>このデバイスには対応していません。</div>
+    <input type='checkbox' id='checkbox'>
+    <textarea id="textarea"></textarea>
+
+
+    <script src='https://code.jquery.com/jquery-3.7.1.min.js' integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=' crossorigin='anonymous'></script>
+    <script>
+
+
+        $(document).ready(function() {
+
+            $('#input_word').focus();
+
+            function txtAlert(inputSelector) {
+                $(inputSelector).val('１文字以上・60文字以内で入力してください。')
+                    .css({'color': '#F00', 'font-family': 'zen kaku gothic new, sans-serif'})
+                    .attr('readonly', true);
+                $('#main_generate').prop('disabled', true).css('pointer-events', 'none');
+                $('#checkbox').prop('checked', true);
+
+                setTimeout(() => {
+                    $(inputSelector).val('')
+                        .css({'color': '#000', 'font-family': 'sans-serif'})
+                        .removeAttr('readonly');
+                    $('#main_generate').prop('disabled', false).css('pointer-events', 'all');
+                    $('#checkbox').prop('checked', false);
+                }, 1500);
+            }
+            function addContainer() {
+                let btn_word_temp = $('#input_word').val();
+                let btn_read_temp = $('#input_read').val();
+                let btn_read_ng = /^[a-zA-Z0-9ａ-ｚＡ-Ｚ０-９!-/:-@¥[-`{-~！-／：-＠［-｀｛-～ぁ-んー]*$/;
+                let btn_textarea = $('#main_preview');
+
+                if (btn_word_temp.length < 1 || btn_word_temp.length > 61) {
+                    txtAlert('#input_word');
+                } else {
+                    var btn_word = $('#input_word').val();
+                    $('#input_word').val('');
+                    updateCount('#input_word', '#input_word_count');
+                }
+
+                if (btn_read_temp.length < 1 || btn_read_temp.length > 61) {
+                    txtAlert('#input_read');
+                } else if (btn_read_ng.test(btn_read_temp)) {
+                    var btn_read = $('#input_read').val();
+                    $('#input_read').val('');
+                    updateCount('#input_read', '#input_read_count');
+                } else {
+                    $('#input_read').val('英数字・記号・ひらがなで入力してください。')
+                        .css({'color': '#F00', 'font-family': 'zen kaku gothic new, sans-serif'})
+                        .attr('readonly', true);
+                    $('#main_generate').prop('disabled', true).css('pointer-events', 'none');
+                    $('#checkbox').prop('checked', true);
+
+                    setTimeout(() => {
+                        $('#input_read').val('')
+                            .css({'color': '#000', 'font-family': 'sans-serif'})
+                            .removeAttr('readonly');
+                        $('#main_generate').prop('disabled', false).css('pointer-events', 'all');
+                        $('#checkbox').prop('checked', false);
+                    }, 1500);
+                }
+
+                if (!$('#checkbox').is(':checked')) {
+                    let btn_textarea_variable = `${btn_read}\t${btn_word}\t名詞`;
+                    let btn_textarea_append = `<pre id='main_preview_line'>${btn_textarea_variable}<div id='main_preview_linedelete' title='この行を削除する'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'><path d='M360-200q-20 0-37.5-9T294-234L120-480l174-246q11-16 28.5-25t37.5-9h400q33 0 56.5 23.5T840-680v400q0 33-23.5 56.5T760-200H360Zm400-80v-400 400Zm-400 0h400v-400H360L218-480l142 200Zm96-40 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Z'/></svg></div></pre>`;
+
+                    btn_textarea.append(btn_textarea_append).css('border', '1px solid #27a');
+                    $('#main_preview_example').remove();
+                    $('p.main_preview_ttl').css({'border': '1px solid #27a', 'color': '#27a'});
+                    $('#textarea').val($('#textarea').val() + btn_textarea_variable + '\n')
+                    setTimeout(() => {
+                        btn_textarea.css('border', '1px solid #aaa');
+                        $('p.main_preview_ttl').css({'border': '1px solid #aaa', 'color': '#000'});
+                    }, 1500);
+                }
+            }
+
+            //ジェネレートBTN
+            $('#main_generate').on('click', function() {
+
+                $(this).addClass('active');
+                setTimeout(() => {
+                    $(this).removeClass('active');
+                }, 300);
+
+                addContainer();
+                $('#input_word').focus();
+            });
+
+
+            $(document).keydown(function(e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+
+                    if ($('#input_word').is(':focus')) {
+                        $('#input_read').focus()
+                    } else {
+                        addContainer();
+                        $('#input_word').focus();
+                    }
+                }
+            });
+
+            //文字数
+            function updateCount(input, countDisplay) {
+                let length = $(input).val().length;
+                $(countDisplay).text(length).css('color', length > 60 ? '#f00' : '#000');
+            }
+            $('#input_word').on('input', function() {
+                updateCount(this, '#input_word_count');
+            });
+            $('#input_read').on('input', function() {
+                updateCount(this, '#input_read_count');
+            });
+
+            //行削除
+            $('body').on('click', '#main_preview_linedelete', function() {
+                $(this).parent('#main_preview_line').css({'color': '#f00', 'opacity': '0'});
+                setTimeout(() => {
+                    $(this).parent('#main_preview_line').remove();
+                }, 300);
+            });
+
+            //Tools
+            let checked_svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>';
+
+            //全て消去
+            $('#preview_tools_delete').on('click', function() {
+                $('.preview_delete_notice').addClass('active');
+            });
+            $('#preview_delete_yes').on('click', function() {
+                $('#main_preview #main_preview_line').css({'color': '#f00', 'opacity': '0'});
+                $('#textarea').val('');
+                $('.preview_delete_notice').removeClass('active');
+                $('#main_preview').html('<pre id=\'main_preview_example\'>例：きららざか[読み]&#9;雲母坂[単語]&#9;名詞[品詞：名詞限定とします]</pre>')
+                
+                setTimeout(() => {
+                    $('#main_preview').empty();
+                    $('#main_preview').html('<pre id=\'main_preview_example\'>例：きららざか[読み]&#9;雲母坂[単語]&#9;名詞[品詞：名詞限定とします]</pre>')
+                }, 300);
+            })
+            $('#preview_delete_no').on('click', function() {
+                $('.preview_delete_notice').removeClass('active');
+            })
+
+            //コピー
+            $('#preview_tools_copy').on('click', function() {
+                $('#textarea').css('display', 'block').select();
+                document.execCommand('copy');
+                $('#textarea').css('display', 'none');
+                $(this).html('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#085"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>');
+
+                $('html, body').animate({
+                    scrollTop: $('#howto').offset().top
+                }, 0);
+
+                setTimeout(() => {
+                    $(this).html(checked_svg);
+                }, 1500);
+            });
+
+            //ダウンロード
+            function toUTF16LE(dl_ta) {
+                // テキストをUTF-16LEエンコードするためのバイト配列を作成
+                var utf16leArray = [];
+                for (var i = 0; i < dl_ta.length; i++) {
+                    var code = dl_ta.charCodeAt(i);
+                    utf16leArray.push(code & 0xFF);       // 低位バイト
+                    utf16leArray.push((code >> 8) & 0xFF); // 高位バイト
+                }
+                // BOMを追加する
+                var bom = [0xFF, 0xFE];
+                return new Uint8Array(bom.concat(utf16leArray));
+            }
+            $('#preview_tools_download').on('click', function() {
+                var dl_ta = $('#textarea').val();
+                var dl_convert = toUTF16LE(dl_ta);
+                var dl_type = new Blob([dl_convert], { type: 'text/plain; charset=utf-16le' });
+                var dl_url = URL.createObjectURL(dl_type);
+
+                var dl_a = $('<a></a>')
+                    .attr('href', dl_url)
+                    .attr('download', 'microsoft_ime_dict.txt')
+                    .appendTo('body');
+
+                dl_a[0].click();
+                dl_a.remove();
+                
+                URL.revokeObjectURL(dl_url);
+
+                $('html, body').animate({
+                    scrollTop: $('#howto').offset().top
+                }, 0);
+            });
+        })
+    </script>
+</body>
+</html>

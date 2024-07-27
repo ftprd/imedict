@@ -1,0 +1,560 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Zen+Kaku+Gothic+New:wght@500;600&family=Roboto+Mono:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+  overflow: hidden;
+}
+
+html {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: calc(100vw - 10px);
+  min-height: 200dvh;
+  background-color: #fff;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background-color: #bbb;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #222;
+}
+
+section.description {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 80px;
+  margin-block: 20px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+section.description p.ttl {
+  font-family: "Righteous", serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+section.description p.sttl {
+  font-family: "zen kaku gothic new", serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  translate: 0 -5px;
+}
+
+main {
+  position: relative;
+  height: calc(100dvh - 120px);
+}
+main p.description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 30px;
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 450px;
+  margin-block: auto;
+  border: 1px dotted #aaa;
+  writing-mode: vertical-rl;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: default;
+  font-family: "zen kaku gothic new", serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+main section.main {
+  position: relative;
+  width: calc(100% - 160px);
+  height: 100%;
+}
+main section.main .main_input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  height: 90px;
+}
+main section.main .main_input div[class*=main_input_] {
+  position: relative;
+  width: 42.5%;
+}
+main section.main .main_input div[class*=main_input_] label {
+  display: block;
+  margin-block: 3px;
+  width: 100%;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease-out;
+}
+main section.main .main_input div[class*=main_input_] input {
+  display: block;
+  width: calc(100% - 7px);
+  height: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #aaa;
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  padding-inline: 20px;
+  margin-left: 7px;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+main section.main .main_input div[class*=main_input_] label[class*=input_notice_] {
+  display: block;
+  margin-block: 3px;
+  width: 100%;
+  height: 16px;
+  text-align: right;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  transition: all 0.3s ease-out;
+}
+main section.main .main_input div[class*=main_input_] label[class*=input_notice_] span[id*=input_] {
+  margin-left: 5px;
+  font-family: "roboto mono", sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+main section.main .main_input div[class*=main_input_] label[class*=input_notice_] span.notice {
+  position: relative;
+  padding-inline: 3px;
+  color: #f00;
+}
+main section.main .main_input div[class*=main_input_] label[class*=input_notice_] span.notice::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 1px;
+  background-color: #f00;
+}
+main section.main .main_input div[class*=main_input_]::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  bottom: 21px;
+  width: 0;
+  height: 2px;
+  background-color: #27a;
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+}
+main section.main .main_input div[class*=main_input_]:has(input:focus) label {
+  color: #27a;
+}
+main section.main .main_input div[class*=main_input_]:has(input:focus)::after {
+  width: calc(100% - 7px);
+}
+main section.main .main_input div[class*=main_input_]:hover input {
+  border-bottom: 1px solid #ccc;
+}
+main section.main #main_generate {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 75px;
+  height: 75px;
+  background-color: #2a7;
+  margin-inline: auto;
+  margin-block: 10px;
+  cursor: pointer;
+  -webkit-clip-path: polygon(0 0, 100% 0, 70% 35%, 100% 35%, 50% 100%, 0 35%, 30% 35%);
+          clip-path: polygon(0 0, 100% 0, 70% 35%, 100% 35%, 50% 100%, 0 35%, 30% 35%);
+  transition: all 0.2s cubic-bezier(0, 1, 0.5, 1.75);
+  z-index: 9;
+}
+main section.main #main_generate span {
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: 1.2rem;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  writing-mode: vertical-rl;
+  color: #fff;
+}
+main section.main #main_generate:hover {
+  background-color: #085;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 40%, 100% 75%, 50% 100%, 0 75%, 0 40%);
+          clip-path: polygon(0 0, 100% 0, 100% 40%, 100% 75%, 50% 100%, 0 75%, 0 40%);
+}
+main section.main #main_generate.active {
+  scale: 1.1 1.5;
+  translate: 0 17.5px;
+  width: 50px;
+}
+main section.main .main_preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: calc(100% - 220px);
+  margin-inline: auto;
+}
+main section.main .main_preview p.main_preview_ttl {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 100%;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  border-radius: 0 10px 10px 0;
+  font-size: 1.5rem;
+  color: #000;
+  font-family: "Righteous", sans-serif;
+  font-weight: 700;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 0.2s ease-out;
+}
+main section.main .main_preview #main_preview {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% - 84px);
+  height: 100%;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 0;
+  translate: -1px;
+  cursor: default;
+  transition: all 0.2s ease-out;
+  overflow: auto;
+}
+main section.main .main_preview #main_preview::-webkit-scrollbar {
+  width: 8px;
+}
+main section.main .main_preview #main_preview::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+main section.main .main_preview #main_preview::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+main section.main .main_preview #main_preview::-webkit-scrollbar-thumb:hover {
+  background-color: #333;
+}
+main section.main .main_preview #main_preview pre#main_preview_line {
+  position: relative;
+  display: block;
+  font-size: 1rem;
+  font-family: sans-serif;
+  padding-inline: 10px;
+  transition: all 0.15s ease-out;
+  margin-bottom: 1px;
+}
+main section.main .main_preview #main_preview pre#main_preview_line:hover {
+  background-color: #f2f2f2;
+}
+main section.main .main_preview #main_preview pre#main_preview_line:first-child {
+  padding-top: 10px;
+}
+main section.main .main_preview #main_preview pre#main_preview_line:last-child {
+  padding-bottom: 10px;
+}
+main section.main .main_preview #main_preview pre#main_preview_line #main_preview_linedelete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  aspect-ratio: 1;
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  z-index: 99;
+  transition: all 0.15s ease-out;
+}
+main section.main .main_preview #main_preview pre#main_preview_line #main_preview_linedelete svg {
+  fill: #f00;
+  width: 24px;
+  transition: all 0.15s ease-out;
+}
+main section.main .main_preview #main_preview pre#main_preview_line #main_preview_linedelete:hover svg {
+  translate: -3px;
+}
+main section.main .main_preview #main_preview pre#main_preview_line:hover #main_preview_linedelete {
+  opacity: 1;
+  pointer-events: all;
+}
+main section.main .main_preview #main_preview pre#main_preview_example {
+  display: block;
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #666;
+  padding-inline: 10px;
+  padding-top: 10px;
+  cursor: text;
+}
+main section.main .main_preview .preview_delete_notice {
+  opacity: 0;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: calc(100% - 85px);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6666666667);
+  border-radius: 0 0 10px 0;
+  z-index: 2;
+  transition: all 0.2s ease-out;
+}
+main section.main .main_preview .preview_delete_notice.active {
+  opacity: 1;
+  pointer-events: all;
+}
+main section.main .main_preview .preview_delete_notice p.ttl {
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  font-size: 1.75rem;
+  color: #fff;
+}
+main section.main .main_preview .preview_delete_notice .btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 30px;
+}
+main section.main .main_preview .preview_delete_notice .btns [id*=preview_delete_] {
+  display: grid;
+  place-items: center;
+  width: 10em;
+  height: 30px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.1s ease-out;
+}
+main section.main .main_preview .preview_delete_notice .btns [id*=preview_delete_]#preview_delete_yes:hover {
+  background-color: #000;
+  color: #f00;
+  border-color: #000;
+}
+main section.main .main_preview .preview_delete_notice .btns [id*=preview_delete_]#preview_delete_no:hover {
+  background-color: #fff;
+  color: #000;
+}
+main section.main .main_preview nav.main_preview_tools {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_] {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  transition: all 0.2s ease-out;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_] svg {
+  width: 24px;
+  transition: all 0.2s ease-out;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]#preview_tools_copy {
+  border-radius: 0 10px 0 0;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]#preview_tools_download {
+  translate: 0 -1px;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]#preview_tools_delete {
+  translate: 0 -2px;
+  border-radius: 0 0 10px 0;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]#preview_tools_delete svg {
+  fill: #f00;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]:hover {
+  background-color: #ddd;
+}
+main section.main .main_preview nav.main_preview_tools [id*=preview_tools_]:hover svg {
+  rotate: 12.5deg;
+}
+
+section#howto {
+  display: block;
+  width: 90%;
+  padding-bottom: 30px;
+  margin-inline: auto;
+}
+section#howto p.howto_ttl {
+  position: relative;
+  display: block;
+  width: 500px;
+  margin-top: 30px;
+  padding-inline: 20px;
+  font-size: 2rem;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  color: #000;
+}
+section#howto p.howto_ttl::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 95%;
+  height: 30%;
+  background-color: rgba(34, 119, 170, 0.2);
+  transform: skewX(-20deg);
+  z-index: -1;
+}
+section#howto div[class*=howto_] {
+  display: block;
+  margin-left: 50px;
+  margin-block: 5px 30px;
+}
+section#howto div[class*=howto_] p[class*=ttl] {
+  display: block;
+  font-size: 1.5rem;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  color: #2a7;
+}
+section#howto div[class*=howto_] p[class*=ttl]::before {
+  content: "○";
+  font-size: 1.25rem;
+  margin-right: 5px;
+}
+section#howto div[class*=howto_] p.description {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.6em;
+}
+section#howto div[class*=howto_] p.description span.desc_notice {
+  color: #f00;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+section#howto div[class*=howto_] p.description span[title] {
+  cursor: help;
+}
+section#howto div[class*=howto_] p.description img.desc_img {
+  width: 20px;
+  padding-inline: 2px;
+  pointer-events: none;
+}
+section#howto div[class*=howto_] p.description a {
+  position: relative;
+  color: #1da1f2;
+  padding-inline: 3px;
+}
+section#howto div[class*=howto_] p.description a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 0;
+  height: 1px;
+  background-color: #1da1f2;
+  transition: all 0.2s ease-out;
+}
+section#howto div[class*=howto_] p.description a:hover::after {
+  width: 100%;
+}
+
+footer {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: #777;
+}
+footer a.copyright {
+  position: relative;
+  display: block;
+  color: #fff;
+  padding-inline: 5px;
+  font-family: sans-serif;
+}
+footer a.copyright::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 0;
+  height: 1px;
+  background-color: #fff;
+  transition: all 0.2s ease-out;
+}
+footer a.copyright:hover::after {
+  width: 100%;
+}
+
+.notice_phone {
+  display: none;
+  writing-mode: vertical-rl;
+  font-size: 1.5rem;
+  font-family: "zen kaku gothic new", sans-serif;
+  font-weight: 500;
+}
+
+#checkbox, #textarea {
+  display: none;
+}
+
+@media (max-width: 830px) {
+  body {
+    width: 100%;
+    height: 100dvh;
+    min-height: auto;
+    display: grid;
+    place-items: center;
+  }
+  body *:not(.notice_phone) {
+    display: none;
+  }
+  body .notice_phone {
+    display: block;
+  }
+}/*# sourceMappingURL=style.css.map */
