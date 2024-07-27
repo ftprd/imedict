@@ -15,7 +15,6 @@ html {
 
 body {
   width: calc(100vw - 10px);
-  min-height: 200dvh;
   background-color: #fff;
 }
 body::-webkit-scrollbar {
@@ -533,6 +532,9 @@ footer a.copyright:hover::after {
 
 .notice_phone {
   display: none;
+  place-items: center;
+  width: 100%;
+  height: calc(100dvh - 50px);
   writing-mode: vertical-rl;
   font-size: 1.5rem;
   font-family: "zen kaku gothic new", sans-serif;
@@ -545,16 +547,31 @@ footer a.copyright:hover::after {
 
 @media (max-width: 830px) {
   body {
-    width: 100%;
+    width: 100vw;
     height: 100dvh;
-    min-height: auto;
-    display: grid;
-    place-items: center;
   }
-  body *:not(.notice_phone) {
+  body section.description {
     display: none;
   }
+  body main {
+    display: none;
+  }
+  body section#howto {
+    display: none;
+  }
+  body footer {
+    height: 50px;
+    background-color: transparent;
+  }
+  body footer a.copyright {
+    color: #000;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  body footer a.copyright::after {
+    background-color: #000;
+  }
   body .notice_phone {
-    display: block;
+    display: grid;
   }
 }/*# sourceMappingURL=style.css.map */
